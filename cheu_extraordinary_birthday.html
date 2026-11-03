@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="theme-color" content="#100f24">
+<title>For Cheu — A little universe of wishes</title>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:wght@400;500;600&display=swap');
+:root{--bg:#100f24;--pink:#ffb7cf;--rose:#f58eae;--gold:#f6d99c;--lav:#c6b4ff;--white:#fff8f4;--muted:#c9bfd7}
+*{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;background:var(--bg);color:var(--white);font-family:'DM Sans',sans-serif;overflow-x:hidden}
+body:before{content:"";position:fixed;inset:0;z-index:-3;background:radial-gradient(ellipse at 20% 10%,#6b477d55,transparent 40%),radial-gradient(ellipse at 85% 65%,#a84f7950,transparent 38%),linear-gradient(145deg,#100f24,#211a38 55%,#17152d)}
+#sky{position:fixed;inset:0;z-index:-2;pointer-events:none;overflow:hidden}
+.star{position:absolute;width:2px;height:2px;border-radius:50%;background:#fff;box-shadow:0 0 9px 2px #fff8;animation:twinkle 3s infinite alternate}
+@keyframes twinkle{to{opacity:.18;transform:scale(.5)}}
+.wrap{width:min(960px,92%);margin:auto}.topbar{position:fixed;z-index:20;top:0;left:0;right:0;display:flex;justify-content:space-between;align-items:center;padding:14px 5%;background:linear-gradient(#100f24d9,transparent);pointer-events:none}.topbar>*{pointer-events:auto}.brand{font:12px 'DM Sans';letter-spacing:.16em;text-transform:uppercase;color:#f6d99c}.sound{border:1px solid #ffffff35;background:#ffffff0d;color:#fff;border-radius:99px;padding:9px 13px;font-size:12px;cursor:pointer}
+section{padding:90px 0;text-align:center}.hero{min-height:100svh;display:grid;place-items:center;padding:90px 0 55px;position:relative}.hero-inner{max-width:760px}.eyebrow{font-size:10px;letter-spacing:.32em;text-transform:uppercase;color:var(--gold)}
+h1,h2,h3{font-family:'Playfair Display',Georgia,serif;font-weight:400}h1{font-size:clamp(3.8rem,12vw,8.3rem);line-height:.91;letter-spacing:-.06em;margin:24px 0 20px;background:linear-gradient(110deg,#fff7ed,#ffb9d0 48%,#f6d99c);color:transparent;background-clip:text}
+h1 span{font-style:italic} .lead{max-width:570px;margin:0 auto;color:var(--muted);font-size:15px;line-height:1.9}
+.pill{display:inline-flex;align-items:center;gap:8px;margin-top:30px;border:1px solid #ffffff35;background:#ffffff0b;color:#fff;padding:13px 21px;border-radius:99px;cursor:pointer;font:600 12px 'DM Sans';transition:.25s}.pill:hover{transform:translateY(-3px);background:#ffffff18;box-shadow:0 10px 35px #e68eae25}
+.scrollhint{position:absolute;bottom:25px;font-size:10px;letter-spacing:.2em;color:#bdb0ca}
+.envelope-area{padding:55px 0 10px}.envelope{width:min(310px,80vw);height:205px;margin:25px auto;position:relative;cursor:pointer;filter:drop-shadow(0 20px 35px #0007);transition:transform .3s}.envelope:hover{transform:translateY(-5px)}.env-back{position:absolute;inset:0;background:#b76c91;border-radius:9px}.env-front{position:absolute;inset:0;background:linear-gradient(145deg,#e6a1b9,#bd7399);clip-path:polygon(0 0,50% 58%,100% 0,100% 100%,0 100%);border-radius:9px}.env-flap{position:absolute;inset:0;background:linear-gradient(145deg,#f1bfd0,#d88ca9);clip-path:polygon(0 0,100% 0,50% 62%);transform-origin:top;transition:transform .8s;z-index:3}.seal{position:absolute;z-index:4;left:50%;top:53%;transform:translate(-50%,-50%);width:46px;height:46px;border-radius:50%;display:grid;place-items:center;background:#f5d89b;color:#8c536d;font-size:22px;box-shadow:0 3px 15px #8d526d55}.envelope.open .env-flap{transform:rotateX(180deg);z-index:0}.letter{display:none;max-width:690px;margin:25px auto 0;padding:clamp(24px,5vw,46px);text-align:left;border:1px solid #ffffff25;border-radius:22px;background:linear-gradient(145deg,#fffaf00e,#ffffff06);box-shadow:0 20px 70px #0004;animation:rise .7s ease}.letter.show{display:block}.letter h3{font-size:30px;color:#ffd4df;margin:0 0 15px}.letter p{color:#e6dce9;font-size:14px;line-height:2;margin:12px 0}.sign{color:var(--gold)!important;font-family:'Playfair Display';font-size:20px!important;font-style:italic}
+.kicker{font-size:10px;letter-spacing:.27em;text-transform:uppercase;color:var(--gold)}h2{font-size:clamp(2.2rem,6vw,4rem);margin:14px 0 18px;line-height:1.1}.sub{max-width:580px;margin:auto;color:var(--muted);font-size:14px;line-height:1.9}
+.panel{margin:34px auto 0;padding:25px;border:1px solid #ffffff20;border-radius:24px;background:#ffffff08;max-width:760px}
+.wish-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin-top:28px}.wish-card{min-height:165px;padding:23px 15px;border:1px solid #ffffff1c;border-radius:20px;background:linear-gradient(150deg,#ffffff10,#ffffff04);cursor:pointer;transition:.25s}.wish-card:hover,.wish-card.active{transform:translateY(-6px);border-color:#ffc4d477;background:#f4a9c51a}.wish-card .emoji{font-size:30px}.wish-card h3{font-size:20px;color:#ffe0b4;margin:12px 0 7px}.wish-card p{font-size:12px;line-height:1.65;color:var(--muted);margin:0}.reveal-note{min-height:30px;margin:20px auto 0;color:#ffd7e2;font-size:14px;line-height:1.8}
+.constellation{max-width:680px;margin:30px auto 0;position:relative;height:300px;border:1px solid #ffffff1a;border-radius:24px;background:radial-gradient(ellipse at center,#6b507733,transparent 70%),#ffffff05;overflow:hidden}
+.constellation button{position:absolute;width:43px;height:43px;border:1px solid #fff7;background:#ffffff12;border-radius:50%;color:#ffe2a7;font-size:20px;cursor:pointer;box-shadow:0 0 20px #f7c9dc33;transition:.2s}.constellation button:hover{transform:scale(1.2);background:#f5b8ce33}.constellation button:nth-child(1){left:18%;top:24%}.constellation button:nth-child(2){left:47%;top:12%}.constellation button:nth-child(3){right:17%;top:29%}.constellation button:nth-child(4){left:30%;bottom:17%}.constellation button:nth-child(5){right:29%;bottom:14%}.star-msg{position:absolute;left:15px;right:15px;bottom:12px;color:#d9cddd;font-size:11px;pointer-events:none}
+.gift-row{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin:35px auto 0;max-width:760px}.gift{border:1px solid #ffffff22;background:#ffffff08;border-radius:22px;padding:22px 12px;cursor:pointer;transition:.25s}.gift:hover{transform:translateY(-5px);background:#ffffff13}.gift .boxemoji{font-size:42px}.gift p{font-size:12px;color:var(--muted);line-height:1.6}.gift strong{display:block;font:19px 'Playfair Display';color:#ffcfdd;margin:12px 0 5px}.gift-result{max-width:650px;min-height:62px;margin:20px auto 0;color:#ffe4b2;line-height:1.8;font-size:14px}
+.final{padding-bottom:110px}.cake{font-size:66px;filter:drop-shadow(0 0 22px #ffb6cf55);margin:18px}.wishbox{display:none;max-width:620px;margin:24px auto;padding:25px;border:1px solid #ffffff25;border-radius:22px;background:#ffffff0d;color:#fff0e7;font-size:14px;line-height:1.9}.wishbox.show{display:block;animation:rise .6s ease}
+footer{text-align:center;padding:35px 12px 50px;color:#aa9fb8;font-size:11px;letter-spacing:.08em}footer span{color:#ffc4d7}
+#toast{position:fixed;bottom:20px;left:50%;transform:translate(-50%,20px);opacity:0;background:#2d2440;border:1px solid #ffffff30;padding:11px 17px;border-radius:99px;font-size:12px;transition:.3s;z-index:30;white-space:nowrap}#toast.show{opacity:1;transform:translate(-50%,0)}
+.float{position:fixed;z-index:15;pointer-events:none;animation:floatup 3.8s ease-out forwards}@keyframes floatup{to{transform:translateY(-110vh) rotate(35deg);opacity:0}}@keyframes rise{from{opacity:0;transform:translateY(16px)}to{opacity:1;transform:none}}
+@media(max-width:650px){section{padding:65px 0}.wish-grid,.gift-row{grid-template-columns:1fr}.wish-card{min-height:auto}.constellation{height:260px}.topbar{padding:13px 4%}.letter{padding:24px}}
+</style>
+</head>
+<body>
+<div id="sky"></div>
+<div class="topbar"><div class="brand">✦ a little universe for cheu</div><button class="sound" id="soundBtn" onclick="toggleSound()">♫ sound: off</button></div>
+
+<header class="hero wrap">
+ <div class="hero-inner">
+  <div class="eyebrow">somewhere between a hello and a friendship</div>
+  <h1>It's your day,<br><span>Cheu.</span></h1>
+  <p class="lead">So I made you a tiny universe. Not because a webpage can hold every good wish, but because someone as lovely as you deserves a little celebration that feels special. 💗</p>
+  <button class="pill" onclick="document.getElementById('envelopeSection').scrollIntoView({behavior:'smooth'})">Open your little surprise <span>✧</span></button>
+ </div>
+ <div class="scrollhint">↓ &nbsp; THERE'S MORE WAITING FOR YOU &nbsp; ↓</div>
+</header>
+
+<main class="wrap">
+<section id="envelopeSection">
+ <div class="kicker">delivered with love, through the internet</div>
+ <h2>A letter, just for you</h2>
+ <p class="sub">A little envelope has travelled all this way. Tap it to open.</p>
+ <div class="envelope-area">
+  <div class="envelope" id="envelope" onclick="openLetter()" role="button" aria-label="Open birthday letter" tabindex="0">
+   <div class="env-back"></div><div class="env-front"></div><div class="env-flap"></div><div class="seal">♥</div>
+  </div>
+ </div>
+ <article class="letter" id="letter">
+  <h3>Dear Cheu, 🌷</h3>
+  <p>Happy birthday!! I hope today reminds you how much happiness you deserve. It's pretty amazing how a friendship can begin through a screen and still bring real smiles, comfort, and lovely little moments into life.</p>
+  <p>Even if miles separate us, I hope you know that your presence matters. I wish you a year filled with peaceful mornings, unexpected laughter, exciting beginnings, and people who appreciate the person you are.</p>
+  <p>May you never feel that you have to become someone else to be worthy of good things. Keep your softness, your spark, your quirks, and all the little things that make you <em>you</em>.</p>
+  <p>Here's to more conversations, more silly moments, more memories to look back on, and hopefully a day when this online friendship gets a real-life chapter too. Until then, consider this tiny webpage a birthday hug sent across the distance. 💌</p>
+  <p class="sign">With warmest wishes, always ✨</p>
+ </article>
+</section>
+
+<section>
+ <div class="kicker">tap to collect a little happiness</div>
+ <h2>Three wishes, waiting for you</h2>
+ <p class="sub">Choose a little star. Each one has a wish tucked inside.</p>
+ <div class="wish-grid">
+  <div class="wish-card" onclick="revealWish(this,0)"><div class="emoji">🌸</div><h3>For your heart</h3><p>Tap to unwrap this wish</p></div>
+  <div class="wish-card" onclick="revealWish(this,1)"><div class="emoji">🌙</div><h3>For your days</h3><p>Tap to unwrap this wish</p></div>
+  <div class="wish-card" onclick="revealWish(this,2)"><div class="emoji">⭐</div><h3>For your dreams</h3><p>Tap to unwrap this wish</p></div>
+ </div>
+ <div class="reveal-note" id="wishText" aria-live="polite">Your wishes are still wrapped… pick one. ♡</div>
+</section>
+
+<section>
+ <div class="kicker">a sky full of little reminders</div>
+ <h2>Find your stars, Cheu ✨</h2>
+ <p class="sub">Tap each star in the sky. There are five little reminders hidden up there.</p>
+ <div class="constellation" id="constellation">
+  <button onclick="starTap(0)" aria-label="Star one">✦</button><button onclick="starTap(1)" aria-label="Star two">✧</button><button onclick="starTap(2)" aria-label="Star three">✦</button><button onclick="starTap(3)" aria-label="Star four">✧</button><button onclick="starTap(4)" aria-label="Star five">✦</button>
+  <div class="star-msg" id="starMsg">0 / 5 stars discovered</div>
+ </div>
+</section>
+
+<section>
+ <div class="kicker">a tiny birthday gift shop</div>
+ <h2>Pick a present 🎁</h2>
+ <p class="sub">No shipping address needed. These gifts arrive instantly.</p>
+ <div class="gift-row">
+  <button class="gift" onclick="openGift(0)"><div class="boxemoji">🎀</div><strong>A pocket of joy</strong><p>For the days you need a smile</p></button>
+  <button class="gift" onclick="openGift(1)"><div class="boxemoji">🧸</div><strong>A comfort kit</strong><p>For when the world feels a bit loud</p></button>
+  <button class="gift" onclick="openGift(2)"><div class="boxemoji">🪄</div><strong>A little magic</strong><p>For all the things you dream of</p></button>
+ </div>
+ <div class="gift-result" id="giftResult" aria-live="polite">Choose one. I promise it's not an empty box. ♡</div>
+</section>
+
+<section class="final">
+ <div class="kicker">before you go…</div>
+ <h2>Make a birthday wish</h2>
+ <div class="cake">🎂</div>
+ <p class="sub">Take a tiny pause, make a wish in your heart, then press the button.</p>
+ <button class="pill" onclick="makeWish()">My wish is ready ✨</button>
+ <div class="wishbox" id="wishbox">🎉 Cheu, may this new chapter surprise you in the loveliest ways. May you laugh until your cheeks hurt, find beauty in ordinary days, meet kind people, and have the courage to chase what makes you happy. Whatever this year brings, I hope it brings you closer to a life that feels truly yours. <br><br><strong>Happy birthday, Cheu. The world is lucky to have your little sparkle in it. 💗</strong></div>
+</section>
+</main>
+<footer>MADE FOR <span>CHEU</span> · FROM ONE SIDE OF THE SCREEN TO THE OTHER ✦</footer>
+<div id="toast" role="status"></div>
+<script>
+const sky=document.getElementById('sky');
+for(let i=0;i<95;i++){let s=document.createElement('i');s.className='star';s.style.left=Math.random()*100+'%';s.style.top=Math.random()*100+'%';s.style.animationDelay=Math.random()*4+'s';s.style.animationDuration=(2+Math.random()*4)+'s';sky.appendChild(s)}
+function toast(t){let x=document.getElementById('toast');x.textContent=t;x.classList.add('show');clearTimeout(window.tt);window.tt=setTimeout(()=>x.classList.remove('show'),2100)}
+function openLetter(){document.getElementById('envelope').classList.add('open');setTimeout(()=>{document.getElementById('letter').classList.add('show');document.getElementById('letter').scrollIntoView({behavior:'smooth',block:'center'})},450);toast('A little note, delivered just for you 💌')}
+document.getElementById('envelope').addEventListener('keydown',e=>{if(e.key==='Enter'||e.key===' '){e.preventDefault();openLetter()}});
+const wishes=[
+'May your heart always find gentle people, safe spaces, and a thousand reasons to feel loved. 🌷',
+'May ordinary days turn into favourite memories, and may laughter find you even on the busiest days. 🌙',
+'May your biggest dreams feel a little closer with every step. You are allowed to hope for wonderful things. ⭐'
+];
+function revealWish(el,n){document.querySelectorAll('.wish-card').forEach(c=>c.classList.remove('active'));el.classList.add('active');document.getElementById('wishText').textContent=wishes[n];sparkles(12)}
+const starMessages=['You deserve kindness, even on the days you forget it.','Your pace is still progress. Keep going gently.','There are so many beautiful things still waiting to find you.','Never underestimate the joy your presence can bring.','You are allowed to take up space and shine in your own way.'];
+let found=new Set();
+function starTap(n){if(found.has(n)){toast('This little reminder is already yours ♡');return}found.add(n);document.getElementById('starMsg').textContent=starMessages[n]+'  ·  '+found.size+' / 5 discovered';sparkles(8);if(found.size===5)toast('You found the whole constellation! ✨')}
+const gifts=[
+'🎀 A pocket of joy: May a random song, a silly message, or a beautiful sunset catch you smiling when you least expect it.',
+'🧸 A comfort kit: Permission to rest, take things one step at a time, and remember that you do not have to figure everything out today.',
+'🪄 A little magic: One brave new beginning, a few happy coincidences, and a dream that turns into a story you cannot wait to tell.'
+];
+function openGift(n){document.getElementById('giftResult').textContent=gifts[n];sparkles(15)}
+function makeWish(){document.getElementById('wishbox').classList.add('show');sparkles(55);document.getElementById('wishbox').scrollIntoView({behavior:'smooth',block:'center'})}
+function sparkles(count){for(let i=0;i<count;i++){let e=document.createElement('span');e.className='float';e.textContent=['✦','✧','💗','✨','🌸'][Math.floor(Math.random()*5)];e.style.left=Math.random()*100+'vw';e.style.bottom='-25px';e.style.fontSize=(13+Math.random()*17)+'px';document.body.appendChild(e);setTimeout(()=>e.remove(),3900)}}
+let audioCtx=null,osc=null,gain=null,soundOn=false;
+function toggleSound(){const b=document.getElementById('soundBtn');if(!soundOn){try{audioCtx=new(window.AudioContext||window.webkitAudioContext)();osc=audioCtx.createOscillator();gain=audioCtx.createGain();osc.type='sine';osc.frequency.value=261.63;gain.gain.value=.018;osc.connect(gain);gain.connect(audioCtx.destination);osc.start();soundOn=true;b.textContent='♫ sound: on';toast('A tiny ambient tone is on')}catch(e){toast('Sound is not supported in this browser')}}else{if(osc)osc.stop();if(audioCtx)audioCtx.close();soundOn=false;b.textContent='♫ sound: off';toast('Sound turned off')}}
+</script>
+</body>
+</html>
